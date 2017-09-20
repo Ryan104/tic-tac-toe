@@ -27,10 +27,34 @@
 table {
 	width: 300px;
 	margin: 30px auto;
+	border: 1px solid #333;
+
 }
 
 td {
 	width: 100px;
 	height: 100px;
+
+}
+
+.cell {
+	transition: all .5s ease-out;
+	background-color: #ccc;
+	font-size: 4em;
+	height: 100%;
+	text-align: center;
+	width: 100%;
+	box-shadow: 4px 4px 10px #ccc;
 	border: 1px solid #333;
+
+
+
+}
+
+.cell:hover {
+	transform: rotateY(45deg);
+}
+
+.cell.flip {
+	transform: rotateY(180deg);
 }
