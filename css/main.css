@@ -1,3 +1,17 @@
 * {
 	box-sizing: border-box;
 }
+
+.player {
+	font-size: 4em;
+	height: 80px;
+	width: 80px;
+	display: inline-block;
+	text-align: center;
+}
+
+.current-player {
+	font-weight: bold;
+	color: red;
+	border-bottom: 1px solid black;
+}
