@@ -4,26 +4,36 @@ $(document).ready(function(){
 	let moveCount = 0; // count turn number
 
 	// Track win condition tallies 
-	// This could be refactored into a tidy object
+	// This could be refactored into a tidy object constructor
 	const dimension = 3;
-	let col_x;
-	let col_o;
-	let row_x;
-	let row_o;
-	let diag_x;
-	let diag_o;
+
+	let gameState = {
+		col_x: arrayOfLength(dimension),
+		col_o: arrayOfLength(dimension),
+		row_x: arrayOfLength(dimension),
+		row_o: arrayOfLength(dimension),
+		diag_x: arrayOfLength(2),
+		diag_o: arrayOfLength(2),
+	};
+
 	initializeTallies(dimension);
-	console.log(col_x);
+	console.log(gameState);
 
 
 	// --- Table Cell Click Listener --- //
 	//   players move is marked on gameboard and cell is removed from play
-	$('.cell').click(markCell);
+	//$('.cell').click(markCell);
+	$('table').on('click', '.cell.notClicked', markCell);
 
 	function markCell(event){
 		// remove the click listener for this element
-		event.preventDefault();
-		$(this).off();
+		// event.preventDefault();
+		// $(this).off();
+
+		console.log(event);
+		console.log(this);
+
+		$(this).removeClass('notClicked');
 
 		console.log(moveCount);
 
@@ -56,15 +66,18 @@ $(document).ready(function(){
 		$('.player').removeClass('current-player');
 		$('#player-x').addClass('current-player');
 		$('.cell').removeClass('em em-cat em-pig');
-		$('.cell').click(markCell);
+		$('.cell').addClass('notClicked');
 		$('table').removeClass('em em-cat em-pig');
 		$('.cell').fadeTo(1, 1);
+
+
 	}
 
 
 	// --- Check for a win condition --- //
 
 	/*
+		(this didnt work)
 		Keep track of game state in a 2d matrix/array:
 		[[cell1, cell2, cell3], [cell4, cell5, cell6], [cell7, cell8, cell9]]
 		each cell can have 3 states, empty, "x", or "o"
@@ -72,6 +85,7 @@ $(document).ready(function(){
 	*/
 
 	/*
+		(this method works but I borrowed the algorithm from stack overflow)
 		For each player, keep a talley of how many moves they have made in
 		each row, collumn diagonal. This is the game state. If the tally in
 		any of these reaches the dimension of the board, the game is over.
@@ -102,17 +116,20 @@ $(document).ready(function(){
 		// Add to talley
 		// This should be cleaner with an object
 		if (modifier == "x"){
-			col_x[column] += 1;
-			row_x[row] += 1;
-			diag_x[0] += diagonal1;
-			diag_x[1] += diagonal2;
+			gameState.col_x[column] += 1;
+			gameState.row_x[row] += 1;
+			gameState.diag_x[0] += diagonal1;
+			gameState.diag_x[1] += diagonal2;
 		} else {
-			col_o[column] += 1;
-			row_o[row] += 1;
-			diag_o[0] += diagonal1;
-			diag_o[1] += diagonal2;
+			gameState.col_o[column] += 1;
+			gameState.row_o[row] += 1;
+			gameState.diag_o[0] += diagonal1;
+			gameState.diag_o[1] += diagonal2;
 		}
+
+		console.log(gameState);
 		
+		// check if any of the tallies has reached a win point
 		if (col_x[column] == dimension || row_x[row] == dimension || diag_x[0] == dimension || diag_x[1] == dimension){
 			return "x";
 		} else if (col_o[column] == dimension || row_o[row] == dimension || diag_o[0] == dimension || diag_o[1] == dimension){
@@ -141,12 +158,13 @@ $(document).ready(function(){
 	}
 
 	function initializeTallies(dimension){
-		col_x = arrayOfLength(dimension);
-		col_o = arrayOfLength(dimension);
-		row_x = arrayOfLength(dimension);
-		row_o = arrayOfLength(dimension);
-		diag_x = arrayOfLength(2);
-		diag_o = arrayOfLength(2);
+		// Could use for loop to loop through keys
+		gameState.col_x = arrayOfLength(dimension);
+		gameState.col_o = arrayOfLength(dimension);
+		gameState.row_x = arrayOfLength(dimension);
+		gameState.row_o = arrayOfLength(dimension);
+		gameState.diag_x = arrayOfLength(2);
+		gameState.diag_o = arrayOfLength(2);
 	}
 
 
