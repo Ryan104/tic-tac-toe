@@ -14,6 +14,11 @@ $(document).ready(function(){
 		// remove the click listener for this element
 		$(this).off();
 
+		// update gameState
+		modifyGameState(gameState, Number($(this).attr('index')), (moveCount % 2) ? "o" : "x");
+		console.log(gameState);
+
+
 		// mark board with cat or pig depending on turn
 		$(this).addClass((moveCount % 2) ? 'em em-cat' : 'em em-pig');
 
@@ -62,6 +67,20 @@ function initialGameState(dimension){
 	return arr;
 }
 
+// Add x or o to gamestate in correct place
+function modifyGameState(currentState, cellNumber, modifier){
+	let dimension = currentState.length;
+	let row = Math.floor(cellNumber / dimension);
+	let column = cellNumber % dimension;
+	currentState[row][column] = modifier;
+}
+
+// Check for win
+function checkWin(gameState){
+	
+
+	return false;
+}
 
 
 // The game can curently be broken by clicking really fast sometimes...
