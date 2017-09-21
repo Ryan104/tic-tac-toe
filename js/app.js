@@ -102,6 +102,7 @@ $(document).ready(function(){
 	*/
 	// Add to talley for each move
 	function modifyGameState(dimension, cellNumber, modifier){
+		console.log(modifier);
 		let row = Math.floor(cellNumber / dimension);
 		let column = cellNumber % dimension;
 		// is it diagonal
@@ -132,9 +133,9 @@ $(document).ready(function(){
 		console.log(gameState);
 		
 		// check if any of the tallies has reached a win point
-		if (col_x[column] == dimension || row_x[row] == dimension || diag_x[0] == dimension || diag_x[1] == dimension){
+		if (gameState.col_x[column] == dimension || gameState.row_x[row] == dimension || gameState.diag_x[0] == dimension || gameState.diag_x[1] == dimension){
 			return "x";
-		} else if (col_o[column] == dimension || row_o[row] == dimension || diag_o[0] == dimension || diag_o[1] == dimension){
+		} else if (gameState.col_o[column] == dimension || gameState.row_o[row] == dimension || gameState.diag_o[0] == dimension || gameState.diag_o[1] == dimension){
 			return "o";
 		} else {
 			return false;
