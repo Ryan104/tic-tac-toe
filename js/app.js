@@ -61,6 +61,8 @@ $(document).ready(function(){
 
 	function resetGame(event){
 		console.log('reset');
+		location.reload();
+		/*
 		moveCount = 0;
 		console.log(moveCount);
 		initializeTallies();
@@ -71,6 +73,7 @@ $(document).ready(function(){
 		$('.cell').addClass('notClicked');
 		$('table').removeClass('em em-cat em-pig');
 		$('.cell').fadeTo(1, 1);
+		*/
 
 
 	}
