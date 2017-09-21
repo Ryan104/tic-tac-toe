@@ -1,0 +1,8 @@
+Possible ADTs:
+-Cell
+	size, inPlay, owner, location(row, column), onClick
+
+-GameBoard
+	dimensions (number of cells), state of the game (score), turn number
+
+-Player
