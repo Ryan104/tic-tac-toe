@@ -22,7 +22,10 @@ $(document).ready(function(){
 
 	function markCell(event){
 		// remove the click listener for this element
+		event.preventDefault();
 		$(this).off();
+
+		console.log(moveCount);
 
 		// mark board with cat or pig depending on turn
 		$(this).addClass((moveCount % 2) ? 'em em-cat' : 'em em-pig');
@@ -31,6 +34,7 @@ $(document).ready(function(){
 		let didWin = modifyGameState(dimension, Number($(this).attr('index')), (moveCount % 2) ? "o" : "x");
 		if (didWin) {
 			console.log(didWin + " won");
+			showWinner(didWin);
 		}
 
 		// next move
@@ -46,11 +50,15 @@ $(document).ready(function(){
 	function resetGame(event){
 		console.log('reset');
 		moveCount = 0;
+		console.log(moveCount);
 		initializeTallies();
+		$('.cell').show();
 		$('.player').removeClass('current-player');
 		$('#player-x').addClass('current-player');
 		$('.cell').removeClass('em em-cat em-pig');
 		$('.cell').click(markCell);
+		$('table').removeClass('em em-cat em-pig');
+		$('.cell').fadeTo(1, 1);
 	}
 
 
@@ -112,6 +120,14 @@ $(document).ready(function(){
 		} else {
 			return false;
 		}
+	}
+
+	// Display the winner
+	function showWinner(winner){
+		// hide all the cells
+		$('.cell').fadeTo(1, .1);
+		// change background of table to winner
+		$('table').addClass((winner === "o") ? 'em em-cat' : 'em em-pig')
 	}
 
 	// Functions for initializing the game state

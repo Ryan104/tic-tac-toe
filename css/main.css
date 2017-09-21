@@ -30,8 +30,10 @@
 
 
 /* -- Game Board -- */
-table {
-	width: 300px;
+.game-board>table {
+	display: block;
+	width: 302px;
+	height: 302px;
 	margin: 30px auto;
 	border: 1px solid #999;
 	box-shadow: 4px 4px 10px #ccc;
