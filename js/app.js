@@ -35,6 +35,8 @@ $(document).ready(function(){
 
 		$(this).removeClass('notClicked');
 
+		playSound();
+
 		console.log(moveCount);
 
 		// mark board with cat or pig depending on turn
@@ -167,10 +169,21 @@ $(document).ready(function(){
 		gameState.diag_o = arrayOfLength(2);
 	}
 
+	function playSound(){
+		if (moveCount % 2) {
+			//play cat
+			catSound.play();
+		} else {
+			//play pig
+			pigSound.play();
+		}
+	}
+
 
 });
 
-
+let pigSound = new Audio("sounds/pig.mp3");
+let catSound = new Audio("sounds/cat.mp3");
 
 
 
