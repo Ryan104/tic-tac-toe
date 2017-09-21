@@ -5,13 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Tic Tac Toe</title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!--EMOJIs-->
+	<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="js/app.js"></script>
 </head>
 <body>
 	<div class="jumbotron">
-		<h1 class="text-center">Tic Tac Toe</h1>
+		<h1 class="text-center">Pig Cat Toe</h1>
 	</div>
 
 	<div class="container">
@@ -19,11 +21,10 @@
 		<!-- Display whose move it is -->
 		<!-- TODO: use jQuery to add/remove .current-player -->
 		<section class="player-turn text-center">
-			<div class="player current-player" id="player-x">
-				X
+			<div class="player current-player em em-pig" id="player-x">
+				<i class=""></i>
 			</div>
-			<div class="player" id="player-o">
-				Y
+			<div class="player em em-cat" id="player-o">
 			</div>
 		</section>
 
@@ -42,24 +43,24 @@
 				</tr>
 				<tr>
 					<td>
-						<div class="cell" id="cell-1"></div>
+						<div class="cell" id="cell-4"></div>
 					</td>
 					<td>
-						<div class="cell" id="cell-2"></div>
+						<div class="cell" id="cell-5"></div>
 					</td>
 					<td>
-						<div class="cell" id="cell-3"></div>
+						<div class="cell" id="cell-6"></div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div class="cell" id="cell-1"></div>
+						<div class="cell" id="cell-7"></div>
 					</td>
 					<td>
-						<div class="cell" id="cell-2"></div>
+						<div class="cell" id="cell-8"></div>
 					</td>
 					<td>
-						<div class="cell" id="cell-3"></div>
+						<div class="cell" id="cell-9"></div>
 					</td>
 				</tr>
 			</table>
@@ -89,16 +90,20 @@
 
 	7- Message box is visible
 
-
-	**FEATURE LIST***
-
+	*** BRANCH: basic functionality ****
 
 	2- I can click a square in the grid
 
 	3- An alternating x or o will appear in the grid square i just clicked (turnCount % 2 )
 		Also, javascript will add a class do change the background color of the square i just clicked
-
+	
 	4- I should only be able to click a cell once (add click listener to .notClicked or something and remove the class once its been clicked)
+
+
+
+
+	**FEATURE LIST***
+
 
 	6- I should be able to play the game on gh-pages
 
@@ -110,7 +115,7 @@
 
 	11- When I hover over an empty square it shows an opaque x or o
 
-	12- 
+	12- "Meow" or "Oink" sounds
 
 	
 
